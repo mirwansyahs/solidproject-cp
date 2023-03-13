@@ -65,7 +65,7 @@
               <ul class="navbar-nav">
                 
                 <li class="nav-item">
-                  <a href="./" target="_blank" class="nav-link flutter-underline">
+                  <a href="./" class="nav-link flutter-underline">
                     <span class="text">Home</span>
                     <svg class="flutter-underline-graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
                       <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
@@ -73,7 +73,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#portfolio" target="_blank" class="nav-link flutter-underline">
+                  <a href="#portfolio" class="nav-link flutter-underline">
                     <span class="text">Portofolio</span>
                     <svg class="flutter-underline-graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
                       <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
@@ -81,7 +81,7 @@
                   </a>
                 </li>
                 <!-- <li class="nav-item">
-                  <a href="#" target="_blank" class="nav-link flutter-underline">
+                  <a href="#" class="nav-link flutter-underline">
                     <span class="text">About us</span>
                     <svg class="flutter-underline-graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
                       <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
@@ -97,7 +97,7 @@
                 
                 
                 <!-- <li class="nav-item">
-                  <a href="#" target="_blank" class="nav-link flutter-underline">
+                  <a href="#" class="nav-link flutter-underline">
                     <span class="text">Career</span>
                     <svg class="flutter-underline-graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
                       <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
@@ -105,7 +105,7 @@
                   </a>
                 </li> -->
                 <li class="nav-item">
-                  <a href="#contact" target="_blank" class="nav-link flutter-underline">
+                  <a href="#contact" class="nav-link flutter-underline">
                     <span class="text">Contact us</span>
                     <svg class="flutter-underline-graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
                       <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
@@ -113,7 +113,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" target="_blank" class="nav-link flutter-underline">
+                  <a href="#" class="nav-link flutter-underline">
                     <span class="text">Login / Register</span>
                     <svg class="flutter-underline-graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
                       <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
