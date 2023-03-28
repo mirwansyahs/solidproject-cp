@@ -1,332 +1,315 @@
-<!DOCTYPE HTML>
-<html lang="en">
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
 
-  <head>
+/*
+ *---------------------------------------------------------------
+ * APPLICATION ENVIRONMENT
+ *---------------------------------------------------------------
+ *
+ * You can load different configurations depending on your
+ * current environment. Setting the environment also influences
+ * things like logging and error reporting.
+ *
+ * This can be set to anything, but default usage is:
+ *
+ *     development
+ *     testing
+ *     production
+ *
+ * NOTE: If you change these, also change the error_reporting() code below
+ */
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
-    <!-- Display -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
-    <!-- Identity -->
-    <title>SOLID PROJECT</title>
-    <meta name="description" content="Solid Project is a creative multipurpose theme for building websites. It is based on Bootstrap 5 and other of the best and most up-to-date code libraries used by professional developers in the world.">
-    <meta name="author" content="Solid Project Team">
-    <link rel="shortcut icon" href="assets/images/favicon-spt.ico" type="image/x-icon" />
-  
-    <!-- Vendor Style Sheet -->
-    <link rel="stylesheet" href="assets/css/vendor/preloader.min.css" />
-    <link rel="stylesheet" href="assets/css/vendor/font-family.min.css" />
-    <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css" />  
-    <link rel="stylesheet" href="assets/css/vendor/menu-engine.min.css" />
-    <link rel="stylesheet" href="assets/css/vendor/menu-grid.min.css" />
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/vendor/swiper.min.css" />
-    <link rel="stylesheet" href="assets/css/vendor/dynamic-slider.min.css" />
-    <link rel="stylesheet" href="assets/css/vendor/bricklayer.min.css" />
-    <link rel="stylesheet" href="assets/css/vendor/lightbox.min.css" />
-    <link rel="stylesheet" href="assets/css/vendor/aos.min.css" />
-  
-    <!-- Main Style Sheet -->
-    <link rel="stylesheet" href="assets/css/theme.css" />
-    <link rel="stylesheet" href="assets/css/core.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-  
-  </head>
+/*
+ *---------------------------------------------------------------
+ * ERROR REPORTING
+ *---------------------------------------------------------------
+ *
+ * Different environments will require different levels of error reporting.
+ * By default development will show errors but testing and live will hide them.
+ */
+switch (ENVIRONMENT)
+{
+	case 'development':
+		error_reporting(-1);
+		ini_set('display_errors', 1);
+	break;
 
-  <body class="shock-body">
+	case 'testing':
+	case 'production':
+		ini_set('display_errors', 0);
+		if (version_compare(PHP_VERSION, '5.3', '>='))
+		{
+			error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
+		}
+		else
+		{
+			error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
+		}
+	break;
 
-    <!-- Preloader -->
-    <div id="preloader" class="preloader white" data-delay="0" data-limit="3000">
-      <img src="assets/images/logo-spt.svg" class="emblem" alt="Emblem" />
-    </div>
+	default:
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'The application environment is not set correctly.';
+		exit(1); // EXIT_ERROR
+}
 
-    <!-- Header -->
-    <header id="header" class="shock-header">
-      <!-- Navbar -->
-      <nav id="navbar" class="navbar navbar-centered navbar-expand-lg auto-hide scheme-3 tertiary">
-        <div class="container-fluid">
-          <!-- Brand -->
-          <a class="navbar-brand magnetic-effect" href="/">
-            <!-- <div class="site-title">Solid Project</div> -->
-            <img src="assets/images/logo-spt.svg" data-logo-alt="assets/images/logo-spt.svg" data-logo-mobile="assets/images/logo-spt.svg" alt="Solid Project" width="50px" class="logo" />
-          </a>
-          <!-- Responsive menu toggle -->
-          <button class="navbar-toggler" data-bs-target="#navbar-items" data-bs-toggle="collapse" aria-expanded="false">
-            <span class="navbar-toggler-icon">
-              <span class="line"></span>
-              <span class="line"></span>
-              <span class="line"></span>
-            </span>
-          </button>
-          <div id="navbar-items" class="collapse navbar-collapse">
-            <!-- Responsive search form -->
-            <div class="navbar-left">
-              <!-- Link -->
-              <ul class="navbar-nav">
-                
-                <li class="nav-item">
-                  <a href="./" class="nav-link flutter-underline">
-                    <span class="text">Home</span>
-                    <svg class="flutter-underline-graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                      <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
-                    </svg>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#portfolio" class="nav-link flutter-underline">
-                    <span class="text">Portofolio</span>
-                    <svg class="flutter-underline-graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                      <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
-                    </svg>
-                  </a>
-                </li>
-                <!-- <li class="nav-item">
-                  <a href="#" class="nav-link flutter-underline">
-                    <span class="text">About us</span>
-                    <svg class="flutter-underline-graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                      <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
-                    </svg>
-                  </a>
-                </li> -->
-                
-              </ul>
-            </div>
-            <div class="navbar-right">
-              <!-- Link -->
-              <ul class="navbar-nav">
-                
-                
-                <!-- <li class="nav-item">
-                  <a href="#" class="nav-link flutter-underline">
-                    <span class="text">Career</span>
-                    <svg class="flutter-underline-graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                      <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
-                    </svg>
-                  </a>
-                </li> -->
-                <li class="nav-item">
-                  <a href="#contact" class="nav-link flutter-underline">
-                    <span class="text">Contact us</span>
-                    <svg class="flutter-underline-graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                      <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
-                    </svg>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link flutter-underline">
-                    <span class="text">Login / Register</span>
-                    <svg class="flutter-underline-graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                      <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
-                    </svg>
-                  </a>
-                </li>
-              </ul>
-              
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
+/*
+ *---------------------------------------------------------------
+ * SYSTEM DIRECTORY NAME
+ *---------------------------------------------------------------
+ *
+ * This variable must contain the name of your "system" directory.
+ * Set the path if it is not in the same directory as this file.
+ */
+	$system_path = 'system';
 
-    <!-- Main -->
-    <main id="main" class="shock-main" data-bg-color="#141415">
-      
-      <!-- Banner -->
-      <section class="shock-section bg-image bg-fixed" data-bg-image="assets/images/b1.png">
-        <div class="container">
-          <div class="holder vh-100 align-v-center">
-            <!-- Intro -->
-            <div class="extended-intro">
-              <div class="wrapper">
-                <div class="left-column">
-                  <h2 class="title text-style-1 text-offset">
-                    <span class="text-1 filled tertiary-50">Solid Project</span>
-                    <span class="text-1 outline white" data-lax="inertia-top">Solid Project</span>
-                  </h2>
-                  <span class="text-2 text-style-2 fw-400 text-outline text-italic gray">turning ideas into results.</span>
-                  <div class="description text-style-12 gray">
-                    <p>We keep in mind that we always need to improve everything we do, aiming to help people with our products and services, prioritizing quality.</p>
-                  </div>                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+/*
+ *---------------------------------------------------------------
+ * APPLICATION DIRECTORY NAME
+ *---------------------------------------------------------------
+ *
+ * If you want this front controller to use a different "application"
+ * directory than the default one you can set its name here. The directory
+ * can also be renamed or relocated anywhere on your server. If you do,
+ * use an absolute (full) server path.
+ * For more info please see the user guide:
+ *
+ * https://codeigniter.com/user_guide/general/managing_apps.html
+ *
+ * NO TRAILING SLASH!
+ */
+	$application_folder = 'application';
 
-      <!-- Banner -->
-      <section class="shock-section bg-image bg-fixed" data-bg-image="assets/images/b2.png">
-        <div class="holder vh-100"></div>
-      </section>
-
-      <!-- Carousel -->
-      <section class="shock-section pt-6 pb-4" id="portfolio">
-        <div class="container max-w-85">
-          <div class="row g-4">
-            <div class="col-12 col-md-6 align-v-center">
-              <!-- Intro -->
-              <div class="side-intro">
-                <h1 class="title text-style-1 text-offset">
-                  <span class="text-1 filled tertiary-50">We build</span>
-                  <span class="text-1 outline white" data-lax="inertia-top">We build</span>
-                </h1>
-                <span class="text-2 text-style-4 fw-400 text-outline text-italic gray">amazing projects.</span>
-                <div class="description text-style-12 gray">
-                  <p>We use the best technologies available on the market to ensure that our customers obtain positive results.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <!-- Carousel -->
-              <div class="gallery swiper slider has-navigation has-scrollbar scheme-2 tertiary" data-columns="1,1,1,1" data-autoplay="10000" data-loop="true">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <!-- Video -->
-                    <a href="https://youtu.be/Nm4PsWAS66I" class="item active lightbox-link hover-zoom">
-                      <i class="fa-solid fa-circle-play gallery-icon floating-item white"></i>
-                      <div class="image-wrapper">
-                        <img src="assets/images/qrmoney.png" class="image" alt="Sistem Parkir menggunakan QR Code sudah mulai digunakan oleh banyak plaza atau pusat perbelanjaan, yang diintegrasikan dengan sistem pembayaran QRIS Gojek, Dana dan e-Wallet lainnya. Ini merupakan sistem yang hanya digunakan untuk pribadi atau skala perusahaan sendiri." />
-                      </div>
-                    </a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="https://youtu.be/2yQJ34DSAxI" class="item lightbox-link hover-zoom">
-                      <i class="fa-solid fa-circle-play gallery-icon floating-item white"></i>
-                      <div class="image-wrapper">
-                        <img src="assets/images/pembukuan.png" class="image" alt="Sistem Informasi Pembukuan SMK Presiden Kota Cirebon merupakan sebuah aplikasi yang akan mempermudah sekolah dalam mengelola pembayaran keuangan siswa, juga terdapat fitur untuk mengelola jurnal, sehingga pekerjaan yang dilakukan akan lebih cepat dan efisien." />
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="swiper-button-prev "></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-scrollbar"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+/*
+ *---------------------------------------------------------------
+ * VIEW DIRECTORY NAME
+ *---------------------------------------------------------------
+ *
+ * If you want to move the view directory out of the application
+ * directory, set the path to it here. The directory can be renamed
+ * and relocated anywhere on your server. If blank, it will default
+ * to the standard location inside your application directory.
+ * If you do move this, use an absolute (full) server path.
+ *
+ * NO TRAILING SLASH!
+ */
+	$view_folder = '';
 
 
-      <!-- Divider -->
-      <section class="shock-section pt-4 pb-4">
-        <div class="container max-w-85">
-          <span class="zzz scheme-2 tertiary-50"></span>
-        </div>
-      </section>
+/*
+ * --------------------------------------------------------------------
+ * DEFAULT CONTROLLER
+ * --------------------------------------------------------------------
+ *
+ * Normally you will set your default controller in the routes.php file.
+ * You can, however, force a custom routing by hard-coding a
+ * specific controller class/function here. For most applications, you
+ * WILL NOT set your routing here, but it's an option for those
+ * special instances where you might want to override the standard
+ * routing in a specific front controller that shares a common CI installation.
+ *
+ * IMPORTANT: If you set the routing here, NO OTHER controller will be
+ * callable. In essence, this preference limits your application to ONE
+ * specific controller. Leave the function name blank if you need
+ * to call functions dynamically via the URI.
+ *
+ * Un-comment the $routing array below to use this feature
+ */
+	// The directory name, relative to the "controllers" directory.  Leave blank
+	// if your controller is not in a sub-directory within the "controllers" one
+	// $routing['directory'] = '';
 
-      
-      <!-- Form -->
-      <section class="shock-section has-overlay pt-5 pb-5 bg-image bg-fixed" data-bg-image="assets/images/laptopontable.webp" id="contact">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-md-6 align-v-center">       
-              <!-- Intro -->
-              <div class="side-intro mb-35">
-                <h2 class="title text-style-1 text-offset">
-                  <span class="text-1 filled tertiary-50">Service</span>
-                  <span class="text-1 outline white" data-lax="inertia-top">Service</span>
-                </h2>
-                <span class="text-2 text-style-4 fw-400 text-outline text-italic gray">custom made.</span>
-                <div class="description text-style-12 gray">
-                  <p>To connect a brand with a target audience, it is necessary to pay attention to every flow, shape, color, font and style that will compose a subconscious message.</p>
-                </div>
-                
-                <!-- Button -->
-                <a href="#" class="button double-edge transparent tertiary-hover">
-                  <span class="button-text white white-hover">Join with us</span>
-                  <i class="fa-solid fa-arrow-right button-icon white white-hover"></i>
-                  <span class="overlay gray-25 magnetic-effect"></span>
-                </a>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-        <!-- Overlay -->
-        <div class="overlay black-25"></div>
-      </section>
+	// The controller class file name.  Example:  mycontroller
+	// $routing['controller'] = '';
 
-    </main>
+	// The controller function you wish to be called.
+	// $routing['function']	= '';
 
-    <!-- Vertical Lines -->
-    <div class="vertical-lines diagonal scheme-2 tertiary">
-      <div class="row">
-        <div class="col-12 col-md-6 align-h-center">
-          <span class="line"></span>
-        </div>
-        <div class="col-12 col-md-6 align-h-center">
-          <span class="line"></span>
-        </div>
-      </div>
-    </div>
 
-    <!-- Side Widget -->
-    <div class="side-widget to-left invert-color mix-blend-difference d-only-desktop">
-      <div class="item">
-        <span class="widget label-icons">
-          <a href="https://instagram.com/solidproject.id" class="link black black-hover"><i class="icon fab fa-instagram"></i></a>
-          <span class="label-line black"></span>
-        </span>
-      </div>
-    </div>
+/*
+ * -------------------------------------------------------------------
+ *  CUSTOM CONFIG VALUES
+ * -------------------------------------------------------------------
+ *
+ * The $assign_to_config array below will be passed dynamically to the
+ * config class when initialized. This allows you to set custom config
+ * items or override any default config values found in the config.php file.
+ * This can be handy as it permits you to share one application between
+ * multiple front controller files, with each file containing different
+ * config values.
+ *
+ * Un-comment the $assign_to_config array below to use this feature
+ */
+	// $assign_to_config['name_of_config_item'] = 'value of config item';
 
-    <!-- Scroll to Top -->
-    <div class="side-widget to-right invert-color mix-blend-difference">
-      <div class="item align-v-bottom">
-        <a href="#" class="link hover-up">
-          <span class="widget float-icon">
-            <i class="fa-solid fa-arrow-up-long icon"></i>
-          </span>
-        </a>
-      </div>
-    </div>
 
-    <!-- Footer -->
-    <footer id="footer" class="shock-footer scheme-1 tertiary" data-bg-color="#1a1a1b">
-      <div class="bottom-bar" data-bg-color="#1a1a1b">
-        <div class="text">© 2020 - <?=date('Y')?> - All rights reserved. The <a href="https://solidproject.id/" class="link gray primary-hover"><u>Solid Project</u></a> is developed and maintained by <a href="https://solidproject.id/" class="link gray primary-hover"><u>Solid Project Team</u></a>.</div>
-      </div>
-    </footer>
-    
-    <!-- Cursor -->
-    <svg class="cursor-effect tertiary" width="220" height="220" viewBox="0 0 220 220">
-      <defs>
-        <filter id="cursor-effect-filter" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
-          <feTurbulence type="fractalNoise" baseFrequency="0" numOctaves="1" result="warp"></feTurbulence>
-          <feOffset dx="-30" result="warpOffset"></feOffset>
-          <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="20" in="SourceGraphic" in2="warpOffset"></feDisplacementMap>
-        </filter>
-      </defs>
-      <circle class="cursor-effect-inner" cx="110" cy="110" r="20"></circle>
-    </svg>
 
-    <!-- Vendor JavaScript -->
-    <script src="assets/js/vendor/jquery.min.js"></script>
-    <script src="assets/js/vendor/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/vendor/preloader.min.js"></script>
-    <script src="assets/js/vendor/inview.min.js"></script>
-    <script src="assets/js/vendor/menu-engine.min.js"></script>
-    <script src="assets/js/vendor/menu-grid.min.js"></script>
-    <script src="assets/js/vendor/bootstrap.min.js"></script>
-    <script src="assets/js/vendor/swiper.min.js"></script>
-    <script src="assets/js/vendor/anime.min.js"></script>
-    <script src="assets/js/vendor/dynamic-slider.min.js"></script>
-    <script src="assets/js/vendor/shuffle.min.js"></script>
-    <script src="assets/js/vendor/stickybits.min.js"></script>
-    <script src="assets/js/vendor/bricklayer.min.js"></script>
-    <script src="assets/js/vendor/lightbox.min.js"></script>
-    <script src="assets/js/vendor/typed.min.js"></script>
-    <script src="assets/js/vendor/progressbar.min.js"></script>
-    <script src="assets/js/vendor/map-styles.min.js"></script>
-    <script src="assets/js/vendor/magnetic-effect.min.js"></script>
-    <script src="assets/js/vendor/gsap.min.js"></script>
-    <script src="assets/js/vendor/aos.min.js"></script>
-    <script src="assets/js/vendor/lax.min.js"></script>
-    <script src="assets/js/vendor/cursor-effect.min.js"></script>
+// --------------------------------------------------------------------
+// END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
+// --------------------------------------------------------------------
 
-    <!-- Main JavaScript -->
-    <script src="assets/js/main.js"></script>
+/*
+ * ---------------------------------------------------------------
+ *  Resolve the system path for increased reliability
+ * ---------------------------------------------------------------
+ */
 
-  </body>
-</html>
+	// Set the current directory correctly for CLI requests
+	if (defined('STDIN'))
+	{
+		chdir(dirname(__FILE__));
+	}
+
+	if (($_temp = realpath($system_path)) !== FALSE)
+	{
+		$system_path = $_temp.DIRECTORY_SEPARATOR;
+	}
+	else
+	{
+		// Ensure there's a trailing slash
+		$system_path = strtr(
+			rtrim($system_path, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		).DIRECTORY_SEPARATOR;
+	}
+
+	// Is the system path correct?
+	if ( ! is_dir($system_path))
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
+		exit(3); // EXIT_CONFIG
+	}
+
+/*
+ * -------------------------------------------------------------------
+ *  Now that we know the path, set the main path constants
+ * -------------------------------------------------------------------
+ */
+	// The name of THIS file
+	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
+
+	// Path to the system directory
+	define('BASEPATH', $system_path);
+
+	// Path to the front controller (this file) directory
+	define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
+
+	// Name of the "system" directory
+	define('SYSDIR', basename(BASEPATH));
+
+	// The path to the "application" directory
+	if (is_dir($application_folder))
+	{
+		if (($_temp = realpath($application_folder)) !== FALSE)
+		{
+			$application_folder = $_temp;
+		}
+		else
+		{
+			$application_folder = strtr(
+				rtrim($application_folder, '/\\'),
+				'/\\',
+				DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+			);
+		}
+	}
+	elseif (is_dir(BASEPATH.$application_folder.DIRECTORY_SEPARATOR))
+	{
+		$application_folder = BASEPATH.strtr(
+			trim($application_folder, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		);
+	}
+	else
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your application folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+		exit(3); // EXIT_CONFIG
+	}
+
+	define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
+
+	// The path to the "views" directory
+	if ( ! isset($view_folder[0]) && is_dir(APPPATH.'views'.DIRECTORY_SEPARATOR))
+	{
+		$view_folder = APPPATH.'views';
+	}
+	elseif (is_dir($view_folder))
+	{
+		if (($_temp = realpath($view_folder)) !== FALSE)
+		{
+			$view_folder = $_temp;
+		}
+		else
+		{
+			$view_folder = strtr(
+				rtrim($view_folder, '/\\'),
+				'/\\',
+				DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+			);
+		}
+	}
+	elseif (is_dir(APPPATH.$view_folder.DIRECTORY_SEPARATOR))
+	{
+		$view_folder = APPPATH.strtr(
+			trim($view_folder, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		);
+	}
+	else
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your view folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+		exit(3); // EXIT_CONFIG
+	}
+
+	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
+
+/*
+ * --------------------------------------------------------------------
+ * LOAD THE BOOTSTRAP FILE
+ * --------------------------------------------------------------------
+ *
+ * And away we go...
+ */
+require_once BASEPATH.'core/CodeIgniter.php';
