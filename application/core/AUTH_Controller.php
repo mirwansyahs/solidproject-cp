@@ -21,7 +21,7 @@ class AUTH_Controller extends CI_Controller {
 			if ($cekData->num_rows() > 0){
 				$cekData = $cekData->row();
 				$data->jabatan 	= $cekData->jabatan;
-				$data->lang 	= $cekData->lang;
+				$data->lang 	= $cekData->lang ?? "id";
 				$this->userdata = $data;
 			}else{
 				

@@ -183,8 +183,8 @@
                   <?php $no = 0; foreach ($data as $key) { ?>
                   <div class="swiper-slide">
                     <!-- Video -->
-                    <a href="https://youtu.be/<?=$key->link?>" class="item <?=($no == 0)?'active':''?> lightbox-link hover-zoom">
-                      <i class="fa-solid fa-circle-play gallery-icon floating-item white"></i>
+                    <a href="<?=base_url()?>assets/images/portofolio/<?=$key->thumbnail?>" class="item <?=($no == 0)?'active':''?> lightbox-link hover-zoom">
+                      <i class="fa-solid gallery-icon floating-item white"></i>
                       <div class="image-wrapper">
                         <img src="<?=base_url()?>assets/images/portofolio/<?=$key->thumbnail?>" class="image" alt="<?=$key->deskripsi?>" />
                       </div>
